@@ -16,7 +16,7 @@ class Puzzle:
 
 
     # Execute BFS traversal to find the solution in the least number of moves
-    def getSolution(self):
+    def getSolutionBFS(self):
 
         queue = [self]  # Initialize a python list representation of queue
         visited = {}    # Initialize a dict/map of visited puzzle states
@@ -150,57 +150,65 @@ class Puzzle:
 #-----------------------------------------------------------------------------
 # Test Cases
 
-print("Running All Test Cases... Please Wait\n")
-# Case 1: Reversed Case (main test)
-# Initial Puzzle = [8, 7, 6, 5, 4, 3, 2, 1, 0]
+# print("Running All Test Cases... Please Wait\n")
+# # Case 1: Reversed Case (main test)
+# # Initial Puzzle = [ 8, 7, 6,
+# #                    5, 4, 3,
+# #                    2, 1, 0 ]
 
-print("Test Case 1: Reversed")
-print("------------------------------------------------------")
-p1 = Puzzle([8, 7, 6, 5, 4, 3, 2, 1, 0])
-p1.getSolution()
+# print("Test Case 1: Reversed")
+# print("------------------------------------------------------")
+# p1 = Puzzle([8, 7, 6, 5, 4, 3, 2, 1, 0])
+# p1.getSolutionBFS()
 
-# Case 2: Trivial Case (requires only a single move)
-# Initial Puzzle = [1, 0, 2, 3, 4, 5, 6, 7, 8]
+# # Case 2: Trivial Case (requires only a single move)
+# # Initial Puzzle = [ 1, 0, 2, 
+# #                    3, 4, 5,
+# #                    6, 7, 8 ]
 
-print("Test Case 2: Trivial")
-print("------------------------------------------------------")
-p2 = Puzzle([1, 2, 3, 4, 5, 6, 7, 0, 8])
-p2.getSolution()
+# print("Test Case 2: Trivial")
+# print("------------------------------------------------------")
+# p2 = Puzzle([1, 2, 3, 4, 5, 6, 7, 0, 8])
+# p2.getSolutionBFS()
 
-# Case 3: Unsolvable Case (should print: No Solution Found)
-# Initial Puzzle = [8, 1, 2, 0, 4, 3, 7, 6, 5]
+# # Case 3: Unsolvable Case (should print: No Solution Found)
+# # Initial Puzzle = [ 8, 1, 2, 
+# #                    0, 4, 3, 
+# #                    7, 6, 5 ]
 
-# An input is insolvable if it has an odd number of inversions
-# A pair of values is an inversion if they are in reverse order of the goal
-# In this code, the inversion calculation is not done, 
-# instead the queue in BFS will run empty and exit if no solution is found
+# # An input is insolvable if it has an odd number of inversions
+# # A pair of values is an inversion if they are in reverse order of the goal
+# # In this code, the inversion calculation is not done, 
+# # instead the queue in BFS will run empty and exit if no solution is found
 
-print("Test Case 3: Unsolvable")
-print("------------------------------------------------------")
-p3 = Puzzle([8, 1, 2, 0, 4, 3, 7, 6, 5])
-p3.getSolution()
+# print("Test Case 3: Unsolvable")
+# print("------------------------------------------------------")
+# p3 = Puzzle([8, 1, 2, 0, 4, 3, 7, 6, 5])
+# p3.getSolutionBFS()
 
-# Case 4: Arbitrary Case
-# Initial Puzzle = [3, 1, 2, 4, 7, 5, 6, 8, 0]
+# # Case 4: Arbitrary Case
+# # Initial Puzzle = [ 3, 1, 2, 4, 7, 5, 6, 8, 0 ]
 
-print("Test Case 4")
-print("------------------------------------------------------")
-p4 = Puzzle([3, 1, 2, 4, 7, 5, 6, 8, 0])
-p4.getSolution()
+# print("Test Case 4")
+# print("------------------------------------------------------")
+# p4 = Puzzle([3, 1, 2, 4, 7, 5, 6, 8, 0])
+# p4.getSolutionBFS()
 
-# Case 5: Random Case
-# Initial puzzle is [7, 1, 0, 6, 4, 5, 2, 3, 8] from seed 1234
+# # Case 5: Random Case
+# # Initial puzzle is [ 7, 1, 0,
+# #                     6, 4, 5,
+# #                     2, 3, 8 ] from seed 1234
 
-# Set seed to 1234
-random.seed(1234)
-# Generates 9 distinct random numbers 0-8
-randomLst = random.sample(range(9), 9)
+# # Set seed to 1234
+# random.seed(1234)
+# # Generates 9 distinct random numbers 0-8
+# randomLst = random.sample(range(9), 9)
 
-print("Test Case 5: Randomized Input (Makes input from seed)")
-print("------------------------------------------------------")
-print("Generated List: " + str(randomLst))
-p5 = Puzzle(randomLst)
-p5.getSolution()
+# print("Test Case 5: Randomized Input (Makes input from seed)")
+# print("------------------------------------------------------")
+# print("Generated List: " + str(randomLst))
+# p5 = Puzzle(randomLst)
+# p5.getSolutionBFS()
 
-# End
-#-----------------------------------------------------------------------------
+# # End
+# #-----------------------------------------------------------------------------
