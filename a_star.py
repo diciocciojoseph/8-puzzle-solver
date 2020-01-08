@@ -1,4 +1,5 @@
-import heapq
+import pqueue
+import heuristics
 
 # A* algorithm applied to 8-puzzle
 # The A* algorithm gives each state a score f = g + h where
@@ -12,38 +13,25 @@ import heapq
 # we check both these lists before appending a child node (we don't want to re-calculate the same state)
 
 
-# Manhattan Distance Priority Heuristic, where h total distance of tiles away from their solve positions
+# Uses Manhattan Distance Priority Heuristic, where h total distance of tiles away from their solve positions
 
 
 def fscore_manhattan(puzzle):
-    pass
+    g = puzzle.depth
+    h = heuristics.manhattan(puzzle)
+
+    return h + g
 
 
-# Hamming Priority Heuristic, where h is the # of misplaced tiles (not counting blank space)
+# Uses Hamming Priority Heuristic, where h is the # of misplaced tiles (not counting blank space)
 
 
 def fscore_hamming(puzzle):
     g = puzzle.depth
-    h = 0            
+    h = heuristics.hamming(puzzle)
 
-    for i in range(len(puzzle.state)):
-        if puzzle.state[i] != puzzle.solution[i] and puzzle.state[i] != 0:
-            h += 1
+    return h + g
 
-    return h + g 
-
-
-# Puzzle Heap
-class PuzzleHeap:
-    def __init__(self, initial=None, key=fscore_hamming):
-        self.key = key
-        self.data = []
-
-    def push(self, item):
-        heapq.heappush(self.data, (self.key(item), item))
-
-    def pop(self):
-        return heapq.heappop(self.data)[1]
 
 # puzzle = puzzle to be solved
 # score_func = score function (can used manhattan or hamming priorities if desired)
@@ -51,20 +39,19 @@ class PuzzleHeap:
 
 def A_STAR(puzzle, score_func=fscore_hamming):
     puzzle.score = score_func(puzzle)
-    heap = PuzzleHeap(score_func)
-    heap.push(puzzle)
+    queue = pqueue.PriorityQueue(score_func)
+    queue.push(puzzle)
     visited = {}
 
-    while heap:
-        cur = heap.pop()
+    while queue:
+        cur = queue.pop()
         visited[str(cur.state)] = True
         if cur.state == cur.solution:
             cur.printSolution()
             return
-        
+
         children = cur.expand()
         for child in children:
             child.score = score_func(child)
             if str(child.state) not in visited:
-                heap.push(child)
-    
+                queue.push(child)
