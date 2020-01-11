@@ -3,11 +3,12 @@
 # for example, the puzzle [1, 2, 3, 4, 5, 6, 7, 8, 0] represents - >    4, 5, 6
 #                                                                       7, 8, 0 ]
 # Where 0 is the blank space
-# 
+#
 # self.depth = the depth of the current node (initialized to 0)
 # self.prev = link to parent puzzle node (initialized to None), this assists with printing the solution chain
 # self.score = score we will use to assign heuristic value for informed-searches if needed
 # self.solution = puzzle solution state
+
 
 class Puzzle:
     # Initialize the puzzle
@@ -29,7 +30,7 @@ class Puzzle:
         return self.score < value.score
 
     # Return child instances of puzzle
-    # Any valid moves that could be made are calculated, 
+    # Any valid moves that could be made are calculated,
     # then applied to the current state to create new Puzzle objects
     # The depth and prev link are also set
     def expand(self):
@@ -97,6 +98,18 @@ class Puzzle:
             k += 1
         print("Solved!")
 
-    # Determine if the puzzle is solvable (tile inversions must be even)
-    def isUnsolvable(self):
-        pass
+# Solvablility can be determined by sorting the array, and counting the number of swaps required to sort it (ignore 0)
+# If an odd number of swaps was required, the puzzle is unsolvable
+# For proof of this refer to: https://www.geeksforgeeks.org/check-instance-8-puzzle-solvable/
+def solvable(state):
+
+    temp = state[:]
+    temp.remove(0)
+    inv = 0
+    for i in range(len(temp)):
+        for j in range(len(temp)-1):
+            if temp[j] > temp[j+1]:
+                temp[j], temp[j+1] = temp[j+1], temp[j]
+                inv += 1
+
+    return True if inv % 2 == 0 else False

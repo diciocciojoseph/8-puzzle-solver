@@ -5,15 +5,16 @@ from algorithms import a_star, bfs, dfs, greedy, ucs
 
 # Add Test Cases Here
 tests = [
-    #puzzle.Puzzle([1, 2, 3, 4, 5, 6, 7, 0, 8]),
+    # puzzle.Puzzle([1, 2, 3, 4, 5, 6, 7, 0, 8]),
     puzzle.Puzzle([3, 6, 5, 7, 1, 8, 0, 2, 4]),
-    #puzzle.Puzzle([0, 3, 5, 1, 6, 8, 7, 2, 4]),
-    #puzzle.Puzzle([8, 7, 6, 5, 4, 3, 2, 1, 0]),
+    # puzzle.Puzzle([0, 3, 5, 1, 6, 8, 7, 2, 4]),
+    # puzzle.Puzzle([8, 7, 6, 5, 4, 3, 2, 1, 0]),
+    puzzle.Puzzle([8, 1, 2, 0, 4, 3, 7, 6, 5]), # Unsolvable
 ]
 
 # Enable certain algorithms to run all tests (Note: DFS may take a while)
 enabled = {
-    "BFS":      True,
+    "BFS":      False,
     "DFS":      False,
     "A*":       True,
     "GREEDY":   False,
@@ -23,15 +24,20 @@ enabled = {
 # Helper function to handle test output
 
 
-def run_test(search_alg, times, name):
+def run_test(search_alg, times, name, testNum):
+    if not puzzle.solvable(tests[testNum].state):
+        print("Test: ", testNum+1, " is unsolvable.")
+        print("\n\n")
+        return
+
     print("\n\n")
-    print("Running Test: ", i+1, " with ", name)
+    print("Running Test: ", testNum+1, " with ", name)
     print("-------------------------------------------------------------------")
     start = time.time()
-    search_alg(tests[i])
+    search_alg(tests[testNum])
     diff = time.time()-start
     times.append(diff)
-    print("Test: ", i+1, " Finished in: ", round(diff, 4))
+    print("Test: ", testNum+1, " Finished in: ", round(diff, 4))
     print("-------------------------------------------------------------------")
     print("\n\n")
 
@@ -40,31 +46,31 @@ def run_test(search_alg, times, name):
 bfs_times = []
 if enabled["BFS"]:
     for i in range(len(tests)):
-        run_test(bfs.BFS, bfs_times, "BFS")
+        run_test(bfs.BFS, bfs_times, "BFS", i)
 
 # Run Tests With DFS
 dfs_times = []
 if enabled["DFS"]:
     for i in range(len(tests)):
-        run_test(dfs.DFS, dfs_times, "DFS")
+        run_test(dfs.DFS, dfs_times, "DFS", i)
 
 # Run Tests With A*
 a_star_times = []
 if enabled["A*"]:
     for i in range(len(tests)):
-        run_test(a_star.A_STAR, a_star_times, "A*")
+        run_test(a_star.A_STAR, a_star_times, "A*", i)
 
 # Run Tests With Greedy Search
 greedy_times = []
 if enabled["GREEDY"]:
     for i in range(len(tests)):
-        run_test(greedy.GREEDY, greedy_times, "GREEDY")
+        run_test(greedy.GREEDY, greedy_times, "GREEDY", i)
 
 # Run Tests With UCS
 ucs_times = []
 if enabled["UCS"]:
     for i in range(len(tests)):
-        run_test(ucs.UCS, ucs_times, "UCS")
+        run_test(ucs.UCS, ucs_times, "UCS", i)
 
 # Display Average Runtimes of each Algorithm Across all test cases
 if enabled["BFS"]:
