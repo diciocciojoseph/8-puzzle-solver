@@ -98,5 +98,5 @@ class Puzzle:
         print("Solved!")
 
     # Determine if the puzzle is solvable (tile inversions must be even)
-    def unsolvable(self):
+    def isUnsolvable(self):
         pass

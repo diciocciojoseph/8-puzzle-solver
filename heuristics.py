@@ -1,4 +1,6 @@
-
+# This module is dedicated to the implementation of the heuristics used to score an 8-puzzle state
+# Hamming Priority: Counts the number of misplaced tiles on the board
+# Manhattan Priority: Calculates the distance of each tile from it's solved position
 
 def hamming(puzzle):
     h = 0

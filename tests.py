@@ -1,25 +1,23 @@
 import time
 import puzzle
-import bfs
-import a_star
-import greedy
-import ucs
 import heuristics
+from algorithms import a_star, bfs, dfs, greedy, ucs
 
 # Add Test Cases Here
 tests = [
-    puzzle.Puzzle([1, 2, 3, 4, 5, 6, 7, 0, 8]),
+    #puzzle.Puzzle([1, 2, 3, 4, 5, 6, 7, 0, 8]),
     puzzle.Puzzle([3, 6, 5, 7, 1, 8, 0, 2, 4]),
-    puzzle.Puzzle([0, 3, 5, 1, 6, 8, 7, 2, 4]),
-    puzzle.Puzzle([8, 7, 6, 5, 4, 3, 2, 1, 0]),
+    #puzzle.Puzzle([0, 3, 5, 1, 6, 8, 7, 2, 4]),
+    #puzzle.Puzzle([8, 7, 6, 5, 4, 3, 2, 1, 0]),
 ]
 
-# Enable certain algorithms to run all tests
+# Enable certain algorithms to run all tests (Note: DFS may take a while)
 enabled = {
     "BFS":      True,
+    "DFS":      False,
     "A*":       True,
-    "GREEDY":   True,
-    "UCS":      True,
+    "GREEDY":   False,
+    "UCS":      False,
 }
 
 # Helper function to handle test output
@@ -44,6 +42,12 @@ if enabled["BFS"]:
     for i in range(len(tests)):
         run_test(bfs.BFS, bfs_times, "BFS")
 
+# Run Tests With DFS
+dfs_times = []
+if enabled["DFS"]:
+    for i in range(len(tests)):
+        run_test(dfs.DFS, dfs_times, "DFS")
+
 # Run Tests With A*
 a_star_times = []
 if enabled["A*"]:
@@ -66,6 +70,10 @@ if enabled["UCS"]:
 if enabled["BFS"]:
     print("Average Running Time For BFS: ",
           round(sum(bfs_times)/len(bfs_times), 4))
+
+if enabled["DFS"]:
+    print("Average Running Time For DFS: ",
+          round(sum(dfs_times)/len(dfs_times), 4))
 
 if enabled["A*"]:
     print("Average Running Time For A*: ",
