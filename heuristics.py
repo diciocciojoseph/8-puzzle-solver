@@ -2,6 +2,7 @@
 # Hamming Priority: Counts the number of misplaced tiles on the board
 # Manhattan Priority: Calculates the distance of each tile from it's solved position
 
+
 def hamming(puzzle):
     h = 0
     for i in range(len(puzzle.state)):
@@ -11,4 +12,9 @@ def hamming(puzzle):
 
 
 def manhattan(puzzle):
-    return -1 
+    score = 0
+    for i in range(1, 9):
+        for stateVal, goalVal in ((puzzle.state.index(i), puzzle.solution.index(i))):
+            score += (abs(stateVal % 3 - goalVal % 3) +
+                      abs(stateVal // 3 - goalVal // 3))
+    return score
