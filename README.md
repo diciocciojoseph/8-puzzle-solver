@@ -1,4 +1,4 @@
-# -puzzle-solver
+# 8-puzzle-solver
 Python program to solve the 8-puzzle using several different searching algorithms, including A* Search, Greedy Search, Uniform-Cost Search
 Breadth-First Search and Depth-First Search. See each algorithm's python file for detailed explanations on how the algorithm works. As 
 well as the implementation.
