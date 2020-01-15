@@ -1,4 +1,4 @@
-# 8_Puzzle_Solver
+# -puzzle-solver
 Python program to solve the 8-puzzle using several different searching algorithms, including A* Search, Greedy Search, Uniform-Cost Search
 Breadth-First Search and Depth-First Search. See each algorithm's python file for detailed explanations on how the algorithm works. As 
 well as the implementation.
@@ -22,7 +22,7 @@ Where 0 is the blank space.
 In the tests.py file, there is an enabled variable. To change which test to run, simply set the algorthm enabled to True/False. 
 
 Here is a screenshot from the tests.py file with examples
-![Test File](https://diciocciojoseph.github.com/8-puzzle-solver/sample_output/tests_file.png)
+![Test File](https://github.com/diciocciojoseph/8-puzzle-solver/sample_output/tests_file.png)
 
 ### Requirements
 - Python 3
