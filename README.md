@@ -18,11 +18,17 @@ Puzzles are represented as 1-D lists, for example the puzzle [1, 2, 3, 4, 5, 6, 
 
 Where 0 is the blank space.
 
+The goal state can be changed by going into the puzzle.py file and changing the self.solution variable to whatever your
+partiuclar goal state may be.
+
 ### Picking Algorithms to Run
 In the tests.py file, there is an enabled variable. To change which test to run, simply set the algorthm enabled to True/False. 
 
-Here is a screenshot from the tests.py file with examples
-![Test File](https://github.com/diciocciojoseph/8-puzzle-solver/sample_output/tests_file.png)
+#### Here is a screenshot from the tests.py file with examples
+![Test File](https://github.com/diciocciojoseph/8-puzzle-solver/blob/master/sample_output/tests_file.png)
+
+#### Here is some sample output of a test case
+![Test Case Sample](https://github.com/diciocciojoseph/8-puzzle-solver/blob/master/sample_output/a-star_testcase.png)
 
 ### Requirements
 - Python 3
