@@ -5,20 +5,21 @@ from algorithms import a_star, bfs, dfs, greedy, ucs
 
 # Add Test Cases Here
 tests = [
-    # puzzle.Puzzle([1, 2, 3, 4, 5, 6, 7, 0, 8]),
-    puzzle.Puzzle([3, 6, 5, 7, 1, 8, 0, 2, 4]),
-    # puzzle.Puzzle([0, 3, 5, 1, 6, 8, 7, 2, 4]),
-    # puzzle.Puzzle([8, 7, 6, 5, 4, 3, 2, 1, 0]),
-    puzzle.Puzzle([8, 1, 2, 0, 4, 3, 7, 6, 5]), # Unsolvable
+    puzzle.Puzzle([1, 2, 3, 4, 5, 6, 7, 0, 8]), # Trivial Case
+    puzzle.Puzzle([2, 4, 3, 1, 0, 5, 7, 8, 6]),   # Easy Case
+    puzzle.Puzzle([3, 6, 5, 7, 1, 8, 0, 2, 4]), # Average Case
+    # puzzle.Puzzle([0, 3, 5, 1, 6, 8, 7, 2, 4]), # Average Case
+    # puzzle.Puzzle([8, 7, 6, 5, 4, 3, 2, 1, 0]), # Worst-Case
+    # puzzle.Puzzle([8, 1, 2, 0, 4, 3, 7, 6, 5]), # Unsolvable
 ]
 
 # Enable certain algorithms to run all tests (Note: DFS may take a while)
 enabled = {
-    "BFS":      False,
-    "DFS":      False,
+    "BFS":      True,
+    "DFS":      True,
     "A*":       True,
-    "GREEDY":   False,
-    "UCS":      False,
+    "GREEDY":   True,
+    "UCS":      True,
 }
 
 # Helper function to handle test output
